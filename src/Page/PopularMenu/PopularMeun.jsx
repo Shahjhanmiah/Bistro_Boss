@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
+
 import SectionTile from "../Section/SectionTile";
 import MenuItem from "../Sharing/MenuItem/MenuItem";
+import useMenu from "../../hook/useMenu";
 
 
 const PopularMeun = () => {
-    const [menu,setMenu] = useState([])
+    const [menu,] = useMenu([])
     const popular = menu.filter(item => item.category === 'popular');
-    useEffect(()=>{
-      fetch('menu.json')
-      .then(res=>res.json())
-      .then(data=>{
-        const popularItems = data.filter(item=>item.category === 'popular')
-        setMenu(popularItems)})
+    // useEffect(()=>{
+    //   fetch('menu.json')
+    //   .then(res=>res.json())
+    //   .then(data=>{
+    //     const popularItems = data.filter(item=>item.category === 'popular')
+    //     setMenu(popularItems)})
 
-    },[])
+    // },[])
     return (
         <div>
            <section>
@@ -29,7 +30,7 @@ const PopularMeun = () => {
                     ></MenuItem>)
                 }
             </div>
-            <button className="btn btn-outline border-0 border-b-4 mt-4">View Full Menu</button>
+            <button className="btn btn-outline border-0 border-b-4 mt-4 ">View Full Menu</button>
             </section> 
         </div>
     );
