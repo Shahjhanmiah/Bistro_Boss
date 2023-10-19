@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link, } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from '../../assets/assets/Tablet login-bro.png'
+import Swal from 'sweetalert2'
 
 const Register = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { createUser, updateUserProfile,googleSignIn } = useContext(AuthContext)
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext)
+    const navigate = useNavigate();
 
 
     const onSubmit = data => {
@@ -20,28 +22,17 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email }
-                        // fetch('https://bistro-boss-server-fawn.vercel.app/users', {
-                        //     method: 'POST',
-                        //     headers: {
-                        //         'content-type': 'application/json'
-                        //     },
-                        //     body: JSON.stringify(saveUser)
-                        // })
-                        //     .then(res => res.json())
-                        //     .then(data => {
-                        //         if (data.insertedId) {
-                        //             reset();
-                        //             Swal.fire({
-                        //                 position: 'top-end',
-                        //                 icon: 'success',
-                        //                 title: 'User created successfully.',
-                        //                 showConfirmButton: false,
-                        //                 timer: 1500
-                        //             });
-                        //             navigate('/');
-                        //         }
-                        //     })
+                        console.log('user profile information update');
+                        reset()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
+
 
 
 
@@ -59,7 +50,7 @@ const Register = () => {
                 // setAuthToken(user);
             })
             .catch(err => console.error(err));
-    
+
     }
 
 
@@ -68,7 +59,7 @@ const Register = () => {
 
     console.log(watch("example"));
     return (
-    <>
+        <>
             <Helmet>
                 <title>Bistro Boss | Sign Up</title>
             </Helmet>
@@ -133,12 +124,12 @@ const Register = () => {
                         </button>
 
                     </div>
-                        
-                       
-                    </div>
+
+
                 </div>
-            </>
-            );
+            </div>
+        </>
+    );
 };
 
-            export default Register;
+export default Register;

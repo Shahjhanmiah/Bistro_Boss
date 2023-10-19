@@ -17,6 +17,12 @@ const Nav = () => {
     <li><Link to="/menu">Our Menu</Link></li>
     <li><Link to="/login">Loign</Link></li>
     <li><Link to="/order/salad">Order Food</Link></li>
+    {
+      user ? <> <button onClick={handleLogout} className="btn btn-ghost">LogOut</button>
+      </>:<> 
+       <li><Link to="/login">Loign</Link></li>
+      </>
+    }
     </>
     return (
         <div className="shadow-md w-full  top-0 left-0 ">
