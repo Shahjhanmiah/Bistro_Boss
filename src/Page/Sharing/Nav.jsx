@@ -1,6 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/AuthProvider";
 
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext)
+  const handleLogout = () => {
+      console.log('click')
+      logOut()
+          .then(() => {
+
+          })
+          .catch(err => console.log(err))
+  }
     const navOptions = <>
     <li><Link to="/">Home</Link></li>
     <li><Link to="/menu">Our Menu</Link></li>
@@ -26,6 +37,12 @@ const Nav = () => {
      {navOptions}
     </ul>
   </div>
+  <Link to="/profile">
+                        {user?.photoURL ?
+                            <img style={{ height: '45px' }} className=' rounded-full mx-2' src={user?.photoURL}></img>
+                            : <div></div>
+                        }
+                    </Link>
   <div className="navbar-end">
     <a className="btn">Button</a>
   </div>
