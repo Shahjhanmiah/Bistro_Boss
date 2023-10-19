@@ -1,7 +1,7 @@
 
 import { Helmet } from 'react-helmet-async';
 import { useContext, useEffect, } from 'react';
-import { Link, } from 'react-router-dom';
+import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, } from 'react-simple-captcha';
 import logo from '../../assets/assets/Tablet login-bro.png'
 import { AuthContext } from '../Context/AuthProvider';
@@ -12,39 +12,44 @@ const Login = () => {
     // const [disabled, setDisabled] = useState(true)
 
      const { login } = useContext(AuthContext);
-    //  const navigate = useNavigate();
-    //  const location = useLocation();
+     const navigate = useNavigate();
+      const location = useLocation();
 
-    //   const from = location.state?.from?.pathname || "/";
+      const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
 
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log( email, password);
+    
 
 
-        login(email, password)
-            .then(result => {
-                console.log(result.user)
-                
-            })
-        // Swal and fire 
-        Swal.fire({
-            title: 'Success!',
-            text: 'User login Successfully',
-            icon: 'success',
-            confirmButtonText: 'Confirm'
-        })
+        const handleLogin = event => {
+            event.preventDefault();
+            const form = event.target;
+            const email = form.email.value;
+            const password = form.password.value;
+            console.log(email, password);
+            login(email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user);
+                    Swal.fire({
+                        title: 'User Login Successful.',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    });
+                    navigate(from, { replace: true });
+                })
+        }
 
 
             
-    }
+    
     // const handleValidateCaptcha = (e) => {
     //     const user_captcha_value = e.target.value;
     //     if (validateCaptcha(user_captcha_value)) {
@@ -58,6 +63,7 @@ const Login = () => {
     //     }
 
     // }
+
 
 
     return (
