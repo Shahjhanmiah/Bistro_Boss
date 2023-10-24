@@ -13,7 +13,7 @@ const MyCart = () => {
     // how does reduce work!!!
     const total = cart.reduce((sum, item) => item.price + sum, 0);
 
-    const handleDelete = item => {
+   const handleDelete = item => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -40,13 +40,12 @@ const MyCart = () => {
                     })
             }
         })
-    }
+    } 
     return (
         <div>
             <Helmet>
                 <title>Bistor || MyCart</title>
             </Helmet>
-            <h1>Hellow developer</h1>
             <div className="w-full">
             <Helmet>
                 <title>Bistro Boss | My Cart</title>

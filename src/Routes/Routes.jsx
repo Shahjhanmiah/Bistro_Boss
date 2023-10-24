@@ -9,6 +9,8 @@ import Login from "../Page/Login/Login";
 import Register from "../Page/Login/Register";
 import Dashboard from "../Dashboard/Dashboard";
 import MyCart from "../Dashboard/MyCart/MyCart";
+import PrivateRoute from "../Page/Context/PrivateRoute";
+import AllUsers from "../Dashboard/AllUsers/AllUsers";
 
 
 
@@ -45,11 +47,16 @@ import MyCart from "../Dashboard/MyCart/MyCart";
     },
     {
       path:'dashboard',
-      element:<Dashboard></Dashboard>,
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
           path:'mycart',
           element:<MyCart></MyCart>
+        },
+        {
+          path:'allusers',
+          loader:()=>fetch('http://localhost:5000/users'),
+          element:<AllUsers></AllUsers>
         }
 
       ]

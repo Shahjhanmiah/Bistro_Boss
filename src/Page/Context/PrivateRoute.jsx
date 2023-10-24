@@ -9,7 +9,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
     if(loading){
         console.log('yes your are a loading')
-        return<div>Loading....</div>
+        return<div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin bg-orange-500 mx-auto"></div>
     }
     if(user && user?.uid){
         return children;
