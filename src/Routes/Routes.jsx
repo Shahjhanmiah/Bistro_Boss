@@ -11,6 +11,9 @@ import Dashboard from "../Dashboard/Dashboard";
 import MyCart from "../Dashboard/MyCart/MyCart";
 import PrivateRoute from "../Page/Context/PrivateRoute";
 import AllUsers from "../Dashboard/AllUsers/AllUsers";
+import AddItem from "../Dashboard/AddItem/AddItem";
+import AdminRoute from "../Dashboard/AdminRoutes/AdminRoute";
+
 
 
 
@@ -53,10 +56,15 @@ import AllUsers from "../Dashboard/AllUsers/AllUsers";
           path:'mycart',
           element:<MyCart></MyCart>
         },
+        
+        {
+          path:'addItem',
+          element:<AdminRoute><AddItem></AddItem></AdminRoute>
+        },
         {
           path:'allusers',
           loader:()=>fetch('http://localhost:5000/users'),
-          element:<AllUsers></AllUsers>
+          element:<AdminRoute><AllUsers></AllUsers>s</AdminRoute>
         }
 
       ]
