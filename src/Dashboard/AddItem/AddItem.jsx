@@ -26,7 +26,7 @@ const AddItem = () => {
         axiosSecure.post('/menu',newItem)
         .then(data=>{
             console.log('after posting new item',data.data);
-            if(data.data.insertId){
+            if(data.data.insertedId){
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
