@@ -13,6 +13,7 @@ import PrivateRoute from "../Page/Context/PrivateRoute";
 import AllUsers from "../Dashboard/AllUsers/AllUsers";
 import AddItem from "../Dashboard/AddItem/AddItem";
 import AdminRoute from "../Dashboard/AdminRoutes/AdminRoute";
+import ManageItems from "../Dashboard/ManageItems/ManageItems";
 
 
 
@@ -65,6 +66,10 @@ import AdminRoute from "../Dashboard/AdminRoutes/AdminRoute";
           path:'allusers',
           loader:()=>fetch('http://localhost:5000/users'),
           element:<AdminRoute><AllUsers></AllUsers>s</AdminRoute>
+        },
+        {
+          path:'manageitems',
+          element:<ManageItems></ManageItems>
         }
 
       ]
