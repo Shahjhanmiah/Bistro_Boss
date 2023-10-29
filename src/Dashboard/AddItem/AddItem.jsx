@@ -1,11 +1,14 @@
 import SectionTile from "../../Page/Section/SectionTile";
 import { useForm } from 'react-hook-form';
+import useAxiosSecure from "../../hook/useAxiosSecure";
+import Swal from "sweetalert2";
 const image_hosting_token = 'db6a93e47d6744ebc4432b0b80b64de4'
 
 const AddItem = () => {
     const image_hosting_url = `https:api.imgbb.com/1/upload?key=${image_hosting_token}`
     console.log(image_hosting_token);
-    const { register, handleSubmit, formState } = useForm();
+    const [axiosSecure] = useAxiosSecure()
+     const { register, handleSubmit, } = useForm();
     const onSubmit = data => {
     const formData = new FormData()
     formData.append('image',data.image[0])
@@ -20,6 +23,19 @@ const AddItem = () => {
         const {name,price,category,recipe} = data;
         const newItem = {name,price:parseFloat(price),category,recipe,image:imgUrl}
         console.log(newItem);
+        axiosSecure.post('/menu',newItem)
+        .then(data=>{
+            console.log('after posting new item',data.data);
+            if(data.data.insertId){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Food added on new Post.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
        }
     })
 }
