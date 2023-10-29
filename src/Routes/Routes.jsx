@@ -14,6 +14,7 @@ import AllUsers from "../Dashboard/AllUsers/AllUsers";
 import AddItem from "../Dashboard/AddItem/AddItem";
 import AdminRoute from "../Dashboard/AdminRoutes/AdminRoute";
 import ManageItems from "../Dashboard/ManageItems/ManageItems";
+import Payment from "../Dashboard/Payment/Payment";
 
 
 
@@ -70,6 +71,10 @@ import ManageItems from "../Dashboard/ManageItems/ManageItems";
         {
           path:'manageitems',
           element:<ManageItems></ManageItems>
+        },
+        {
+          path:'payment',
+          element:<Payment></Payment>
         }
 
       ]

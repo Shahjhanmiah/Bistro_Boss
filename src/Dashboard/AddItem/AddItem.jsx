@@ -44,7 +44,7 @@ const AddItem = () => {
     return (
         <div>
             <div className="w-full px-10">
-                <SectionTile subHeading="What's new" heading="Addan item" ></SectionTile>
+            <SectionTile heading="Additem" subHeading="What's"></SectionTile>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full mb-4">
                         <label className="label">
