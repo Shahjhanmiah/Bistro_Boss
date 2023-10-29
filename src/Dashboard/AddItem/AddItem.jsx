@@ -5,7 +5,7 @@ const image_hosting_token = 'db6a93e47d6744ebc4432b0b80b64de4'
 const AddItem = () => {
     const image_hosting_url = `https:api.imgbb.com/1/upload?key=${image_hosting_token}`
     console.log(image_hosting_token);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState } = useForm();
     const onSubmit = data => {
     const formData = new FormData()
     formData.append('image',data.image[0])
@@ -23,7 +23,7 @@ const AddItem = () => {
        }
     })
 }
-    console.log(errors);
+    
     return (
         <div>
             <div className="w-full px-10">
