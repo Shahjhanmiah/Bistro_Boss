@@ -23,7 +23,7 @@ const ManageItems = () => {
 
                 axiosSecure.delete(`/menu/${item._id}`)
                     .then(res => {
-                        console.log('deleted res', res.data);
+                        
                         if (res.data.deletedCount > 0) {
                             refetch();
                             Swal.fire(
