@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
-import useMenu from "../../hook/useMenu";
-import useAxiosSecure from "../../hook/useAxiosSecure";
 import SectionTile from "../../Page/Section/SectionTile";
 import { FaTrashAlt } from "react-icons/fa";
+import useMenu from "../../hook/useMenu";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 
 const ManageItems = () => {
