@@ -1,11 +1,28 @@
 import SectionTile from "../../Page/Section/SectionTile";
 import { useForm } from 'react-hook-form';
+const image_hosting_token = 'db6a93e47d6744ebc4432b0b80b64de4'
 
 const AddItem = () => {
-    const image_hosting_token = 'db6a93e47d6744ebc4432b0b80b64de4'
+    const image_hosting_url = `https:api.imgbb.com/1/upload?key=${image_hosting_token}`
     console.log(image_hosting_token);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+    const formData = new FormData()
+    formData.append('image',data.image[0])
+    fetch(image_hosting_url,{
+        method:"POST",
+        body:formData
+    })
+    .then(res=>res.json())
+    .then(imgResponsive=>{
+       if(imgResponsive.success){
+        const imgUrl = imgResponsive.data.display_url 
+        const {name,price,category,recipe} = data;
+        const newItem = {name,price:parseFloat(price),category,recipe,image:imgUrl}
+        console.log(newItem);
+       }
+    })
+}
     console.log(errors);
     return (
         <div>
