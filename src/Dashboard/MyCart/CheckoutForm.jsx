@@ -63,6 +63,7 @@ const CheckoutForm = () => {
                     Pay
                 </button>
             </form>
+            {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
         </>
     );
 };
