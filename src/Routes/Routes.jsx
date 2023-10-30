@@ -70,7 +70,7 @@ import Payment from "../Dashboard/Payment/Payment";
         },
         {
           path:'manageitems',
-          element:<ManageItems></ManageItems>
+          element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
         },
         {
           path:'payment',
