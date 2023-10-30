@@ -1,10 +1,28 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../useAuth";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({price}) => {
     const stripe = useStripe()
     const elements = useElements()
     const [cardError, setCardError] = useState('');
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure()
+    const [clientSecret, setClientSecret] = useState('');
+    const [transactionId, setTransactionId] = useState('');
+
+
+    useEffect(() => {
+       
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    console.log(res.data.clientSecret)
+                    setClientSecret(res.data.clientSecret);
+                })
+        
+    }, [])
+
 
     const handleSubmit = async (event) => {
         // Block native form submission.
@@ -38,6 +56,25 @@ const CheckoutForm = () => {
             console.log('PaymentMethod', paymentMethod);
         }
 
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        email: user?.email || 'unknown',
+                        name: user?.displayName || 'anonymous'
+                    },
+                },
+            },
+        );
+
+        if (confirmError) {
+            console.log(confirmError);
+        }
+
+        console.log('payment intent', paymentIntent)
+
     }
     return (
         <>
@@ -59,7 +96,7 @@ const CheckoutForm = () => {
                     }}
                 />
                 <br></br>
-                <button className="mx-auto w-50   btn btn-outline btn-primary" type="submit" disabled={!stripe}>
+                <button className="mx-auto w-40   btn btn-outline btn-primary" type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
             </form>
