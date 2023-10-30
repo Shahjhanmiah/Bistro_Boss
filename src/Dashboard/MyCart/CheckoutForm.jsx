@@ -5,9 +5,13 @@ const CheckoutForm = () => {
     const elements = useElements()
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        // Block native form submission.
+        event.preventDefault();
+    
         if (!stripe || !elements) {
-            return
+          // Stripe.js has not loaded yet. Make sure to disable
+          // form submission until Stripe.js has loaded.
+          return;
         }
 
         // Get a reference to a mounted CardElement. Elements knows how
@@ -38,7 +42,8 @@ const CheckoutForm = () => {
                     },
                 }}
             />
-            <button type="submit" disabled={!stripe}>
+            <br></br>
+            <button className="mx-auto w-50   btn btn-outline btn-primary" type="submit" disabled={!stripe}>
                 Pay
             </button>
         </form>
