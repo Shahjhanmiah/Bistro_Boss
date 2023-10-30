@@ -11,6 +11,7 @@ const CheckoutForm = ({price}) => {
     const [axiosSecure] = useAxiosSecure()
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
+    const [processing, setProcessing] = useState(false);
 
 
     useEffect(() => {
@@ -74,6 +75,10 @@ const CheckoutForm = ({price}) => {
         }
 
         console.log('payment intent', paymentIntent)
+
+        if(paymentIntent.status === 'succeeded'){
+            const transactionId  = paymentIntent.id
+        }
 
     }
     return (
