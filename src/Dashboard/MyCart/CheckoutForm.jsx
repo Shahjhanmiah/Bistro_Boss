@@ -11,7 +11,7 @@ const CheckoutForm = () => {
     const [cardError, setCardError] = useState('');
     // const [clientSecret, setClientSecret] = useState('');
     // const [processing, setProcessing] = useState(false);
-    // const [transactionId, setTransactionId] = useState('');
+     const [transactionId, setTransactionId] = useState('');
 
 
     // const [transactionId, setTransactionId] = useState('');
@@ -27,14 +27,15 @@ const CheckoutForm = () => {
         if (card === null) {
             return
         }
+        console.log('card',card);
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
-
+         
         if (error) {
             console.log('error', error);
-            setCardError('error'.Message)
+            setCardError('error'.message)
 
         }
         else {
@@ -69,8 +70,8 @@ const CheckoutForm = () => {
                     Pay
                 </button>
             </form>
-            {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
+             {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
+            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>} 
 
 
         </>
