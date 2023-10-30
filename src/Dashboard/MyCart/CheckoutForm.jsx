@@ -22,10 +22,16 @@ const CheckoutForm = () => {
         if (card == null) {
             return;
         }
+        console.log('card',card);
+         // Use your card Element with other Stripe.js APIs
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+        type: 'card',
+        card,
+      });
 
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="w-2/3 mt-8" onSubmit={handleSubmit}>
             <CardElement
                 options={{
                     style: {
