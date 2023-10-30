@@ -1,8 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useState } from "react";
 
 const CheckoutForm = () => {
     const stripe = useStripe()
     const elements = useElements()
+    const [cardError, setCardError] = useState('');
 
     const handleSubmit = async (event) => {
         // Block native form submission.
@@ -29,35 +31,39 @@ const CheckoutForm = () => {
             card,
         });
         if (error) {
-            console.log('[error]', error);
+            console.log('error', error);
+            setCardError(error.message)
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            setCardError('')
+            console.log('PaymentMethod', paymentMethod);
         }
 
     }
     return (
-        <form className="w-2/3 mt-8" onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <>
+            <form className="w-2/3 mt-8" onSubmit={handleSubmit}>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <br></br>
-            <button className="mx-auto w-50   btn btn-outline btn-primary" type="submit" disabled={!stripe}>
-                Pay
-            </button>
-        </form>
+                    }}
+                />
+                <br></br>
+                <button className="mx-auto w-50   btn btn-outline btn-primary" type="submit" disabled={!stripe}>
+                    Pay
+                </button>
+            </form>
+        </>
     );
 };
 
