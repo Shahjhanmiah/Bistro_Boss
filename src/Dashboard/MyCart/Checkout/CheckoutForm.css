@@ -1,12 +1,8 @@
 /* These styles are used if a demo specific stylesheet is not present */
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
 
-body,
+
+
 html {
   background-color: #f6f9fc;
   font-size: 18px;
