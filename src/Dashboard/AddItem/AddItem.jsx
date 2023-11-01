@@ -11,6 +11,7 @@ const AddItem = () => {
      const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
     const formData = new FormData()
+
     formData.append('image',data.image[0])
     fetch(image_hosting_url,{
         method:"POST",

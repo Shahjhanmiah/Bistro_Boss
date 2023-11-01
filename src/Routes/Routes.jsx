@@ -15,6 +15,8 @@ import AddItem from "../Dashboard/AddItem/AddItem";
 import AdminRoute from "../Dashboard/AdminRoutes/AdminRoute";
 import ManageItems from "../Dashboard/ManageItems/ManageItems";
 import Payment from "../Dashboard/Payment/Payment";
+import UserHome from "../Dashboard/AdmineHome/UserHome";
+import AdmineHome from "../Dashboard/AdmineHome/AdmineHome";
 
 
 
@@ -55,6 +57,11 @@ import Payment from "../Dashboard/Payment/Payment";
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         {
+          path:'userhome',
+          element:<UserHome></UserHome>
+
+        },
+        {
           path:'mycart',
           element:<MyCart></MyCart>
         },
@@ -75,6 +82,10 @@ import Payment from "../Dashboard/Payment/Payment";
         {
           path:'payment',
           element:<Payment></Payment>
+        },
+        {
+          path:'adminehome',
+          element:<AdmineHome></AdmineHome>
         }
 
       ]
