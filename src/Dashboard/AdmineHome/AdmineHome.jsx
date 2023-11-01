@@ -73,6 +73,12 @@ const AdmineHome = () => {
 
             </div>
 
+            <div className="flex">
+                <div className="w-1/2">
+
+                </div>
+            </div>
+
         </div>
     );
 };
