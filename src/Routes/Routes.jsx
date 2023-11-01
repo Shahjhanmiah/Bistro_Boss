@@ -85,7 +85,7 @@ import AdmineHome from "../Dashboard/AdmineHome/AdmineHome";
         },
         {
           path:'adminehome',
-          element:<AdmineHome></AdmineHome>
+          element:<AdminRoute><AdmineHome></AdmineHome></AdminRoute>
         }
 
       ]
