@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from "../../hook/useCart";
+import useAdmin from "../../hook/useAdmin";
 
 const Nav = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
   const { user, logOut } = useContext(AuthContext)
+  const [isAdmin] = useAdmin()
   const [cart] = useCart()
   const handleLogout = () => {
     console.log('click')
@@ -37,6 +39,11 @@ const Nav = () => {
     <li><Link to="/menu">Our Menu</Link></li>
     <li><Link to="/login">Loign</Link></li>
     <li><Link to="/order">Order Food</Link></li>
+
+    {
+      isAdmin ? <li><Link to='/dashboard/adminehome'>Dashbord</Link></li> :
+        <li><Link to='/dashboard/userhome'>Dashbord</Link></li>
+    }
 
 
 
