@@ -75,15 +75,13 @@ const Updatefile = () => {
 
                     </div>
                     {/* lg */}
-                    
-                        <label className="label">
-                            <span className="label-text">Price</span>
-                        </label>
-                        <label className="input-group">
-                    <textarea type='text' name="recipedetail" placeholder="recipedetail" className="textarea textarea-bordered textarea-lg w-full " ></textarea>
-                        </label>
-                    
 
+                    <label className="label">
+                        <span className="label-text">Recipedetail</span>
+                    </label>
+                    <label className="textarea-group">
+                        <textarea type='text' name="recipedetail" placeholder="recipedetail" className="textarea textarea-bordered textarea-lg w-full " ></textarea>
+                    </label>
                     <br></br>
                     <input type="submit" value="Update Coffee" className="btn btn-block" />
 
