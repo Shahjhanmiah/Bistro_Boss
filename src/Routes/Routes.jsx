@@ -17,6 +17,7 @@ import ManageItems from "../Dashboard/ManageItems/ManageItems";
 import Payment from "../Dashboard/Payment/Payment";
 import UserHome from "../Dashboard/AdmineHome/UserHome";
 import AdmineHome from "../Dashboard/AdmineHome/AdmineHome";
+import Updatefile from "../Dashboard/Udatefile/Updatefile";
 
 
 
@@ -86,6 +87,11 @@ import AdmineHome from "../Dashboard/AdmineHome/AdmineHome";
         {
           path:'adminehome',
           element:<AdminRoute><AdmineHome></AdmineHome></AdminRoute>
+        },
+        {
+          path:'update',
+          element:<Updatefile></Updatefile>
+
         }
 
       ]

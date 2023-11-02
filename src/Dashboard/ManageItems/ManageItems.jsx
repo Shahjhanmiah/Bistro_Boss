@@ -77,7 +77,7 @@ const ManageItems = () => {
                             </td>
                             <td className="text-right">${item.price}</td>
                             <td>
-                                <button className="btn btn-ghost btn-xs">details</button>
+                                <button className="btn btn-ghost btn-xs">Update</button>
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
