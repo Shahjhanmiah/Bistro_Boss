@@ -1,146 +1,93 @@
-import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
-import LocalTime from "local-time"
+import { FaTrashAlt, } from "react-icons/fa";
+import SectionTile from "../../Page/Section/SectionTile";
+import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-LocalTime.start()
+
+
 const Booking = () => {
-    const [startDate, setStartDate] = useState(new Date());
+    const {refetch,data: booking = [] } = useQuery({
+        queryKey:['booking'],
+        queryFn : async ()=>{
+            const res = await fetch('http://localhost:5000/booking'
+        )
+        return res.json()
+        }
+    })
 
-    const [time, setTime] = useState('');
-
-    const handleTimeChange = (event) => {
-        setTime(event.target.value);
-    };
-
-    // 
-    
-
-    const handleAddBooking = event => {
-
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const date = form.date.value;
-        const time = form.time.value;
-        const email = form.email.value;
-        const phone = form.phone.value;
-        const guest = form.guest.value
-        const newBookig = { name, date, time, email, phone, guest }
-        console.log(newBookig);
-        fetch('http://localhost:5000/booking',{
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newBookig)
+    const handleDelete = item => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/booking/${item._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
         })
-        .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.insertedId){
-                    Swal.fire({
-                        title: 'Success!',
-                        text: ' Bookig Added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                      })
-                }
-            })
-    }
+    } 
 
+  
     return (
         <div>
-
-            <div className="bg-[#F4F3F0] p-24">
-                <h2 className="text-3xl font-extrabold text-center">Booking</h2>
-                <form onSubmit={handleAddBooking} >
-                    {/* form name and quantity row */}
-                    <div className="md:flex mb-8">
-                        <div className="form-control md:w-1/2">
-                            <label className="label">
-                                <span className="label-text">Date*</span>
-                            </label>
-                            <label className="input-group">
-                                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}
-
-                                    input type="date" name="date" placeholder="Date" className="input input-bordered w-full"
-                                    required
-                                />
-
-                            </label>
-                        </div>
-                        <div className="form-control md:w-1/2 ml-4">
-                            <label className="label">
-                                <span className="label-text">Time</span>
-                            </label>
-
-                            <label className="input-group"></label>
-                            <input
-                                type="time"
-                                name="time"
-                                id="timeInput"
-                                value={time}
-                                onChange={handleTimeChange}
-                                required
-                            />
-                        </div>
-                    </div>
-                    {/* form supplier row */}
-                    <div className="md:flex mb-8">
-                        <div className="form-control md:w-1/2">
-                            <label className="label">
-                                <span className="label-text">Guest</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="text" name="guest" placeholder="Guest" className="input input-bordered w-full"
-                                    required />
-                            </label>
-                        </div>
-                        <div className="form-control md:w-1/2 ml-4">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="text" name="name" placeholder="Name" className="input input-bordered w-full"
-                                    required />
-                            </label>
-                        </div>
-                    </div>
-                    {/* form category and details row */}
-                    <div className="md:flex mb-8">
-                        <div className="form-control md:w-1/2">
-                            <label className="label">
-                                <span className="label-text">Phone</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="number" name="phone" placeholder="Number" className="input input-bordered w-full" />
-                            </label>
-                        </div>
-                        <div className="form-control md:w-1/2 ml-4">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <label className="input-group">
-                                <input type="email" name="email" placeholder="Email" className="input input-bordered w-full" required />
-                            </label>
-                        </div>
-                    </div>
-                    {/* form Photo url row */}
-
-                    <input type="submit" value="Add Booking" className="btn btn-block" />
-
-                </form>
-            </div >
+            <SectionTile heading="Manage Booking" subHeading="What's"></SectionTile>
+          <h1 className="text-3xl"> Total Item:{booking.length}</h1>
+          <div className="overflow-x-auto w-full ">
+                <table className="table w-full ">
+                    {/* head */}
+                    <thead>
+                        <tr className="bg-yellow-500">
+                            <th>#</th>
+                            <th>USER EMAIL</th>
+                            <th>PHONE NUMBER</th>
+                            <th>BOOKING DATE</th>
+                            <th>BOOKING TIME</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            booking.map((item, index) => <tr
+                                key={item._id}
+                            >
+                                <td>
+                                    {index + 1}
+                                </td>
+                                <td className="'text-end">
+                                    {item.email}
+                                    
+                                </td>
+                                <td>
+                                    {item.phone}
+                                </td>
+                                <td className="text-end">{item.date}</td>
+                                <td className="text-end">{item.time}</td>
+                                <td><button onClick={()=> handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button></td>
+                            </tr>)
+                        }
 
 
-
-
-        </div >
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 };
-
-
 
 export default Booking;

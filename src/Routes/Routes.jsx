@@ -72,6 +72,7 @@ import Regervation from "../Dashboard/Regervation/Regervation";
         {
           path:'regervation',
           element:<Regervation></Regervation>
+         
         },
         
         {
@@ -91,7 +92,8 @@ import Regervation from "../Dashboard/Regervation/Regervation";
         },
         {
           path:'booking',
-          element:<AdminRoute><Booking></Booking></AdminRoute>
+          element:<AdminRoute><Booking></Booking></AdminRoute>,
+          loader: ()=> fetch('http://localhost:5000/booking')
         },
         {
           path:'payment',
