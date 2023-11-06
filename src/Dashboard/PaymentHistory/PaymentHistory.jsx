@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import SectionTile from "../../Page/Section/SectionTile";
 
 
 const PaymentHistory = () => {
@@ -8,11 +9,11 @@ const PaymentHistory = () => {
     
     return (
         <div>
-            <p>payment:{payment.length}</p>
+            
 
             <div>
-            <SectionTile heading="Manage Booking" subHeading="What's"></SectionTile>
-          <h1 className="text-3xl"> Total Item:{booking.length}</h1>
+            <SectionTile heading="Payment History" subHeading="What's"></SectionTile>
+          <h1 className="text-3xl"> Total Item:{payment.length}</h1>
           <div className="overflow-x-auto w-full ">
                 <table className="table w-full ">
                     {/* head */}
@@ -20,9 +21,8 @@ const PaymentHistory = () => {
                         <tr className="bg-yellow-500">
                             <th>#</th>
                             <th>USER EMAIL</th>
-                            <th>PHONE NUMBER</th>
-                            <th>BOOKING DATE</th>
-                            <th>BOOKING TIME</th>
+                            <th>Price</th>
+                            <th> PAYMENT DATE</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,10 +39,11 @@ const PaymentHistory = () => {
                                     
                                 </td>
                                 <td>
-                                    {pay.phone}
+                                    {pay.price
+}
                                 </td>
-                                <td className="text-end">{item.date}</td>
-                                <td className="text-end">{item.time}</td>
+                                <td className="text-end">{pay.date}</td>
+                                <td className="text-end">{pay.time}</td>
                                
                             </tr>)
                         }
