@@ -34,7 +34,7 @@ const Booking = () => {
                             refetch()
                             Swal.fire(
                                 'Deleted!',
-                                'Your file has been deleted.',
+                                'Your are  Booking delete.',
                                 'success'
                             )
                         }
