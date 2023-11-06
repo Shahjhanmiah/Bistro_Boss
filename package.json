@@ -10,13 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@github/time-elements": "^4.0.0",
     "@smastrom/react-rating": "^1.3.2",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.10",
     "@tanstack/react-query": "^5.0.0",
     "axios": "^1.5.1",
     "firebase": "^10.5.0",
+    "local-time": "^2.1.0",
+    "primereact": "^10.0.9",
     "react": "^18.2.0",
+    "react-datepicker": "^4.21.0",
     "react-dom": "^18.2.0",
     "react-google-recaptcha": "^3.1.0",
     "react-helmet-async": "^1.3.0",

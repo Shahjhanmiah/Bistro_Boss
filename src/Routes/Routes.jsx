@@ -18,6 +18,8 @@ import Payment from "../Dashboard/Payment/Payment";
 import UserHome from "../Dashboard/AdmineHome/UserHome";
 import AdmineHome from "../Dashboard/AdmineHome/AdmineHome";
 import Updatefile from "../Dashboard/Udatefile/Updatefile";
+import Booking from "../Dashboard/BookingItem/Booking";
+
 
 
 
@@ -71,6 +73,8 @@ import Updatefile from "../Dashboard/Udatefile/Updatefile";
           path:'addItem',
           element:<AdminRoute><AddItem></AddItem></AdminRoute>
         },
+
+        
         {
           path:'allusers',
           loader:()=>fetch('http://localhost:5000/users'),
@@ -81,6 +85,10 @@ import Updatefile from "../Dashboard/Udatefile/Updatefile";
           element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
         },
         {
+          path:'booking',
+          element:<AdminRoute><Booking></Booking></AdminRoute>
+        },
+        {
           path:'payment',
           element:<Payment></Payment>
         },
@@ -88,11 +96,15 @@ import Updatefile from "../Dashboard/Udatefile/Updatefile";
           path:'adminehome',
           element:<AdminRoute><AdmineHome></AdmineHome></AdminRoute>
         },
-        {
-          path:'update',
-          element:<Updatefile></Updatefile>
+        
+        
 
+        {
+          path:'update/:id',
+          element:<Updatefile></Updatefile>,
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         }
+
 
       ]
     }
