@@ -19,6 +19,7 @@ import UserHome from "../Dashboard/AdmineHome/UserHome";
 import AdmineHome from "../Dashboard/AdmineHome/AdmineHome";
 import Updatefile from "../Dashboard/Udatefile/Updatefile";
 import Booking from "../Dashboard/BookingItem/Booking";
+import Regervation from "../Dashboard/Regervation/Regervation";
 
 
 
@@ -67,6 +68,10 @@ import Booking from "../Dashboard/BookingItem/Booking";
         {
           path:'mycart',
           element:<MyCart></MyCart>
+        },
+        {
+          path:'regervation',
+          element:<Regervation></Regervation>
         },
         
         {
