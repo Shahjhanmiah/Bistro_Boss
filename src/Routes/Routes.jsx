@@ -20,6 +20,7 @@ import AdmineHome from "../Dashboard/AdmineHome/AdmineHome";
 import Updatefile from "../Dashboard/Udatefile/Updatefile";
 import Booking from "../Dashboard/BookingItem/Booking";
 import Regervation from "../Dashboard/Regervation/Regervation";
+import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 
 
 
@@ -68,6 +69,12 @@ import Regervation from "../Dashboard/Regervation/Regervation";
         {
           path:'mycart',
           element:<MyCart></MyCart>
+        },
+        {
+          path:'paymenthistory',
+          element:<PaymentHistory></PaymentHistory>,
+          loader:()=>fetch('http://localhost:5000/payment'),
+
         },
         {
           path:'regervation',
