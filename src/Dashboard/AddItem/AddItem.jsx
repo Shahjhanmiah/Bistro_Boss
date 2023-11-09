@@ -57,7 +57,7 @@ const AddItem = () => {
 
     return (
         <div>
-            <Helmet>Dashbord || AddItem</Helmet>
+            <Helmet><title>Dashbord || AddItem</title></Helmet>
             
             <div className="w-full px-10 bg-[#F4F3F0] p-15">
                 <SectionTile heading="Additem" subHeading="What's"></SectionTile>
