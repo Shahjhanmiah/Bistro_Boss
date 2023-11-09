@@ -54,7 +54,7 @@ const Regervation = () => {
     return (
         <div>
             <div>
-                 <Helmet>Dasbord || Regervation</Helmet>
+                 <Helmet><title>Dasbord || Regervation</title></Helmet>
                 <div className="bg-[#F4F3F0] p-24">
                     <h2 className="text-3xl font-extrabold text-center">Booking</h2>
                     <form onSubmit={handleAddBooking} >
