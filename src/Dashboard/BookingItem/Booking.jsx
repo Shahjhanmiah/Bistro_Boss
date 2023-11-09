@@ -48,7 +48,7 @@ const Booking = () => {
     return (
         <div>
             <SectionTile heading="Manage Booking" subHeading="What's"></SectionTile>
-            <Helmet>Dashbord || Booking</Helmet>
+            <Helmet><title>Dashbord || Booking</title></Helmet>
           <h1 className="text-3xl"> Total Item:{booking.length}</h1>
           <div className="overflow-x-auto w-full ">
                 <table className="table w-full ">
