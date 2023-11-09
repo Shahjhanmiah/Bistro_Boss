@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_token = 'db6a93e47d6744ebc4432b0b80b64de4'
 
@@ -56,6 +57,7 @@ const AddItem = () => {
 
     return (
         <div>
+            <Helmet>Dashbord || AddItem</Helmet>
             
             <div className="w-full px-10 bg-[#F4F3F0] p-15">
                 <SectionTile heading="Additem" subHeading="What's"></SectionTile>

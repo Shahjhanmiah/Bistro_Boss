@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import LocalTime from "local-time"
+import { Helmet } from "react-helmet-async";
 LocalTime.start()
 
 const Regervation = () => {
@@ -30,7 +31,7 @@ const Regervation = () => {
         const guest = form.guest.value
         const newBookig = { name, date, time, email, phone, guest }
         console.log(newBookig);
-        fetch('http://localhost:5000/booking', {
+        fetch('https://bistory-server.onrender.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +54,7 @@ const Regervation = () => {
     return (
         <div>
             <div>
-
+                 <Helmet>Dasbord || Regervation</Helmet>
                 <div className="bg-[#F4F3F0] p-24">
                     <h2 className="text-3xl font-extrabold text-center">Booking</h2>
                     <form onSubmit={handleAddBooking} >

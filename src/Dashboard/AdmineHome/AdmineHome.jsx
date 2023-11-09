@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hook/useAxiosSecure";
 import useAuth from "../useAuth";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
 import { PieChart, Pie, ResponsiveContainer } from 'recharts';
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -67,7 +68,7 @@ const AdmineHome = () => {
     return (
         <div className="w-full m-4  ">
             <h1 className="text-5xl text-center text-orange-500  ">Well Come Back,{user.name}</h1>
-
+              <Helmet>Dashbord || AdmineHome</Helmet>
             <div>
                 <div className="stats shadow m-8 g  ">
 

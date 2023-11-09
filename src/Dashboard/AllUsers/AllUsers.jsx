@@ -11,14 +11,14 @@ const AllUsers = () => {
     const {refetch, data: users = [] } = useQuery({
         queryKey:['users'],
         queryFn : async ()=>{
-            const res = await fetch('http://localhost:5000/users'
+            const res = await fetch('https://bistory-server.onrender.com/users'
         )
         return res.json()
         }
     })
     
     const handleMakeAdmin = user =>{
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://bistory-server.onrender.com/users/admin/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -47,7 +47,7 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${user._id}`, {
+                fetch(`https://bistory-server.onrender.com/users/${user._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

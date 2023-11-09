@@ -2,13 +2,14 @@ import { FaTrashAlt, } from "react-icons/fa";
 import SectionTile from "../../Page/Section/SectionTile";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const Booking = () => {
     const {refetch,data: booking = [] } = useQuery({
         queryKey:['booking'],
         queryFn : async ()=>{
-            const res = await fetch('http://localhost:5000/booking'
+            const res = await fetch('https://bistory-server.onrender.com/booking'
         )
         return res.json()
         }
@@ -25,7 +26,7 @@ const Booking = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/booking/${item._id}`, {
+                fetch(`https://bistory-server.onrender.com/booking/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -47,6 +48,7 @@ const Booking = () => {
     return (
         <div>
             <SectionTile heading="Manage Booking" subHeading="What's"></SectionTile>
+            <Helmet>Dashbord || Booking</Helmet>
           <h1 className="text-3xl"> Total Item:{booking.length}</h1>
           <div className="overflow-x-auto w-full ">
                 <table className="table w-full ">

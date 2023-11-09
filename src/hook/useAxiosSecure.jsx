@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../Dashboard/useAuth';
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5000', 
+  baseURL: 'https://bistory-server.onrender.com', 
 });
 
 const useAxiosSecure = () => {

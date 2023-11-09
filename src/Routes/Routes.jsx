@@ -73,7 +73,7 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
         {
           path:'paymenthistory',
           element:<PaymentHistory></PaymentHistory>,
-          loader:()=>fetch('http://localhost:5000/payment'),
+          loader:()=>fetch('https://bistory-server.onrender.com/payment'),
 
         },
         {
@@ -90,7 +90,7 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
         
         {
           path:'allusers',
-          loader:()=>fetch('http://localhost:5000/users'),
+          loader:()=>fetch('https://bistory-server.onrender.com/users'),
           element:<AdminRoute><AllUsers></AllUsers>s</AdminRoute>
         },
         {
@@ -100,8 +100,9 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
         {
           path:'booking',
           element:<AdminRoute><Booking></Booking></AdminRoute>,
-          loader: ()=> fetch('http://localhost:5000/booking')
+          // loader: ()=> fetch('https://bistory-server.onrender.com/booking')
         },
+
         {
           path:'payment',
           element:<Payment></Payment>
@@ -116,7 +117,7 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
         {
           path:'update/:id',
           element:<Updatefile></Updatefile>,
-          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+          loader: ({params}) => fetch(`https://bistory-server.onrender.com/menu/${params.id}`)
         }
 
 

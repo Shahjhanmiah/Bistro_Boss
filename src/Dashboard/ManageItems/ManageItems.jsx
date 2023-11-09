@@ -4,6 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import useMenu from "../../hook/useMenu";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageItems = () => {
@@ -41,6 +42,7 @@ const ManageItems = () => {
 
     return (
         <div className="w-full">
+            <Helmet>Dashbord || ManageItem</Helmet>
             <SectionTile heading="Manage All Items" subHeading="Hurry up"></SectionTile>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

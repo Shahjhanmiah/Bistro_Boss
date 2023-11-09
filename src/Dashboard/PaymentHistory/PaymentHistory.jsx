@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import SectionTile from "../../Page/Section/SectionTile";
+import { Helmet } from "react-helmet-async";
 
 
 const PaymentHistory = () => {
@@ -10,7 +11,7 @@ const PaymentHistory = () => {
     return (
         <div>
             
-
+            <Helmet>Dashbord || PaymentHistory</Helmet>
             <div>
             <SectionTile heading="Payment History" subHeading="What's"></SectionTile>
           <h1 className="text-3xl"> Total Item:{payment.length}</h1>

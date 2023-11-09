@@ -12,7 +12,7 @@ const Testmoinal = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://bistory-server.onrender.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
