@@ -11,7 +11,7 @@ const PaymentHistory = () => {
     return (
         <div>
             
-            <Helmet>Dashbord || PaymentHistory</Helmet>
+            <Helmet><title>Dashbord || PaymentHistory</title></Helmet>
             <div>
             <SectionTile heading="Payment History" subHeading="What's"></SectionTile>
           <h1 className="text-3xl"> Total Item:{payment.length}</h1>
