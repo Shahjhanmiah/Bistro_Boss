@@ -21,7 +21,7 @@ const UserHome = () => {
 
             <div className="w-full m-4  ">
                 <h1 className="text-5xl text-center text-orange-500  ">Well Come Back,{user.name}</h1>
-                  <Helmet> Dashbord || UserHome</Helmet>
+                  <Helmet> <title>Dashbord || UserHome</title></Helmet>
                 <div>
                     <div className="stats shadow m-8 py-10 ">
 
