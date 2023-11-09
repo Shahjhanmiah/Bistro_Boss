@@ -59,7 +59,7 @@ const AddItem = () => {
         <div>
             <Helmet><title>Dashbord || AddItem</title></Helmet>
             
-            <div className="w-full px-10 bg-[#F4F3F0] p-15">
+            <div className="w-full px-10 bg-[#F4F3F0] m-20 p-20">
                 <SectionTile heading="Additem" subHeading="What's"></SectionTile>
                 <form onSubmit={handleSubmit(onSubmit)}>
                    <p>tiem:{time.toLocaleTimeString()}</p>
@@ -107,7 +107,7 @@ const AddItem = () => {
                     </div>
                  
                    
-                    <input className="btn btn-sm mt-4  bg-yellow-700" type="submit" value="Add Item" />
+                    <input className="btn btn-sm mt-4  mx-auto bg-yellow-700" type="submit" value="Add Item" />
                 </form>
             </div>
 

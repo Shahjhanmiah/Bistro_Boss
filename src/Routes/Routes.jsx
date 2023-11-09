@@ -26,6 +26,7 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 
 
 
+
   export const router = createBrowserRouter([
     {
       path: "/",
@@ -52,6 +53,8 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
             path: '/register',
             element: <Register></Register>
         }, 
+
+       
         
         
       ]
@@ -66,6 +69,7 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
           element:<UserHome></UserHome>
 
         },
+        
         {
           path:'mycart',
           element:<MyCart></MyCart>
@@ -86,6 +90,8 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
           path:'addItem',
           element:<AdminRoute><AddItem></AddItem></AdminRoute>
         },
+
+       
 
         
         {

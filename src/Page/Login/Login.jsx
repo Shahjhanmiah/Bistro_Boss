@@ -130,7 +130,7 @@ const Login = () => {
                         </form>
                        <div className='mx-auto'>
                        <ReCAPTCHA
-                        sitekey="6LfHcNwoAAAAAMyvSYahzeh--AkIRomm3qjugy0Z"
+                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                         onChange={onChange}
                     />,
                        </div>

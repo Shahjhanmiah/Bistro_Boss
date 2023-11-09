@@ -39,6 +39,7 @@ const Nav = () => {
     <li><Link to="/menu">Our Menu</Link></li>
     <li><Link to="/login">Loign</Link></li>
     <li><Link to="/order">Order Food</Link></li>
+    <li><Link to="/sidebar">Sidebar</Link></li>
 
     {
       isAdmin ? <li><Link to='/dashboard/adminehome'>Dashbord</Link></li> :
