@@ -12,7 +12,7 @@ const Payment = () => {
     const price = parseFloat(total.toFixed(2))
     return (
         <div>
-            <Helmet>Dashbord || Payment </Helmet>
+            <Helmet> <title>Dashbord || Payment</title> </Helmet>
             <SectionTile subHeading='Please Process' heading='Payment'></SectionTile>
             <h1 className="text-3xl">Taka er taka tumi uri uri ase .... ase</h1>
             <Elements stripe={stripePromise}>
