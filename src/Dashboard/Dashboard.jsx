@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin()
     return (
         <div className="drawer lg:drawer-open">
-            <Helmet>Dashbord || Dashbord</Helmet>
+            <Helmet><title>Dashbord || Dashbord</title></Helmet>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}
